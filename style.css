@@ -23,24 +23,6 @@ body {
             color: #ff0000; 
         }
 
-        .contact-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info i {
-            margin-right: 5px;
-        }
-
-        .social-icons {
-            margin-left: 20px;
-        }
-
-        .social-icons i {
-            margin-left: 10px;
-            color: #000;
-        }
-
         .nav-bar {
             background-color:  #1b2957;
             padding: 10px 20px;
