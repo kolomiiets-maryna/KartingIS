@@ -31,14 +31,14 @@ body {
         }
 
         .dropdown {
-            display: inline-block; /* Keeps it in line with other nav items */
+            display: inline-block; 
             position: relative;
         }
 
         .dropbtn {
             color: #fff;
             text-decoration: none;
-            margin: 0 15px;
+            /* margin: 0 15px; */
             font-weight: bold;
             cursor: pointer;
         }
@@ -48,21 +48,22 @@ body {
             position: absolute;
             background-color: #130703; 
             min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
             z-index: 1;
             left: 0; 
         }
 
-        .dropdown-content a {
+        .dropdown-el{
             color: #fff;
             padding: 12px 16px;
+            margin: 0;
             text-decoration: none;
             display: block;
             text-align: left;
         }
 
         .dropdown-content a:hover {
-            background-color: #cc3700; 
+            background-color: #191e2c; 
         }
 
         .dropdown:hover .dropdown-content {
@@ -70,11 +71,36 @@ body {
         }
 
 
-        .nav-bar a {
+        .options {
             color: #fff;
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        .login-button {
+            margin-left: 20px;
+        }
+
+        .btn {
+            background-color: #1b2957; 
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px; 
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color:  #465999; 
+        }
+
+        .btn i {
+            font-size: 18px;
         }
 
         .hero {
