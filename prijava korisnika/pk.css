@@ -1,0 +1,32 @@
+body{
+    background: linear-gradient(black, #750000);
+    color: whitesmoke;
+    font-family:  'Agency FB';
+    text-align: center;
+}
+div{
+    margin-bottom: 3%;
+    
+}
+button{
+    background-color: whitesmoke;
+    color: #750000;
+    border-radius: 40%;
+    border-color: whitesmoke;
+    border-width: 1cm;
+}
+#glavni{
+    margin-top: 10%;
+    width: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+    float: left;
+}
+#s1{
+    float: left;
+    width: 30%;
+}
+#s2{
+    float: left;
+    width: 30%;
+}
