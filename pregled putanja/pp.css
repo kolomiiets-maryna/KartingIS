@@ -1,0 +1,36 @@
+.putanja{
+    border-color: whitesmoke;
+    border-style: ridge;
+    border-width: 2cm;
+    border-radius: 40%;
+    width: 70%;
+}
+body{
+    background: linear-gradient(black, #750000);
+    color: whitesmoke;
+    text-align: center;
+    font-family: 'Agency FB';
+}
+#prvi{
+    float: left;
+    width: 30%;
+}
+#drugi{
+    float: left;
+    margin-left: 5%;
+    width: 30%;
+}
+#treći{
+    float: left;
+    margin-left: 5%;
+    width: 30%;
+}
+div{
+    margin-bottom: 3%;
+}
+#slika{
+    margin-bottom: 0%;
+}
+img{
+    width: 100%;
+}
