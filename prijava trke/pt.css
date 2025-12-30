@@ -17,16 +17,18 @@ button{
 }
 #glavni{
     margin-top: 10%;
-    width: 20%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 30%;
+    /* margin-left: 10%; */
+    /* margin-right: 10%; */
     float: left;
 }
 #s1{
     float: left;
     width: 30%;
+    margin-right: 5%;
 }
 #s2{
     float: left;
     width: 30%;
+    margin-left: 5%;
 }

@@ -1,12 +1,24 @@
+@font-face { 
+    font-family: 'Sakana'; 
+    src: url('../fonts/Sakana.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+h1, h2 {
+    font-family: 'Sakana', sans-serif;
+}
+
 .vozilo{
-    border-color: whitesmoke;
-    border-style: ridge;
+   border-color: whitesmoke;
+    border-style: double;
     border-width: 2cm;
     border-radius: 40%;
     width: 70%;
 }
+
 body{
-    background: linear-gradient(black, #750000);
+    background: linear-gradient(black, #191e2c);
     color: whitesmoke;
     text-align: center;
     font-family: 'Agency FB';
