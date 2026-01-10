@@ -17,14 +17,13 @@
 
     $query = "
     create table if not exists Korisnici(
-        kID int(7) AUTO_INCREMENT,
+        kID mediumint UNSIGNED AUTO_INCREMENT,
         korisnickoIme varchar(20) not null,
         sifra varchar(20) not null,
-        godine int(3) not null,
         rodjendan date not null,
         tel varchar(12),
         eMail varchar(64) not null,
-        brojTrka int(4),
+        brojTrka smallint UNSIGNED,
         bestLapTime float(12),
         lastPresent date,
         admin boolean not null,
@@ -32,46 +31,47 @@
     );
 
     create table if not exists Vozila(
-        vID int(2) auto_increment,
+        vID tinyint UNSIGNED auto_increment,
         naziv varchar(15) not null,
-        broj int(3) not null,
-        brojDostupnih int(3) not null,
+        broj tinyint UNSIGNED not null,
+        brojDostupnih tinyint UNSIGNED not null,
         primary key (vID)
     );
 
     create table if not exists Putanje(
-        pID int(2) auto_increment,
+        pID tinyint UNSIGNED auto_increment,
         naziv varchar(20) not null,
-        duzina int(5) not null,
+        duzina smallint UNSIGNED not null,
         primary key (pID)
     );
 
     create table if not exists Trke(
-        tID int(8) auto_increment,
-        pID int(2) not null,
-        tip int(2) not null,
+        tID int UNSIGNED auto_increment,
+        pID tinyint UNSIGNED not null,
+        vID tinyint UNSIGNED not null,
+        brojTrkaca tinyint UNSIGNED not null,
         datumIVrijeme datetime not null,
-        trajanje float(8) not null,
-        brojLapova int(2) not null,
+        brojLapova tinyint not null,
         primary key (tID),
-        FOREIGN KEY (pID) REFERENCES Putanje(pID)
+        FOREIGN KEY (pID) REFERENCES Putanje(pID),
+        FOREIGN KEY (vID) REFERENCES Vozila(vID)
     );
 
     create table VezaKorisnikTrka(
-        kID int(7) not null,
-        tID int(8) not null,
+        kID mediumint UNSIGNED not null,
+        tID int UNSIGNED not null,
         FOREIGN KEY (kID) REFERENCES Korisnici(kID),
         FOREIGN KEY (tID) REFERENCES Trke(tID),
-        UNIQUE (kID, tID)
+        primary key (kID, tID)
     );
     
     create table Cijene(
-        pID int(2) not null,
-        vID int(2) not null,
+        pID tinyint UNSIGNED not null,
+        vID tinyint UNSIGNED not null,
         cijena float(8) not null,
         FOREIGN KEY (pID) REFERENCES Putanje(pID),
         FOREIGN KEY (vID) REFERENCES Vozila(vID),
-        UNIQUE (pID, vID)
+        primary key (pID, vID)
     )";
 
     if(!mysqli_multi_query($dbLink, $query))

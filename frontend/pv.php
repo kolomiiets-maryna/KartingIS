@@ -3,7 +3,7 @@
 
 <head>
     <title>Vozila</title>
-    <link rel="stylesheet" href="http://localhost/KartingIS/css/general.css">
+    <link rel="stylesheet" href="../css/general.css">
 </head>
 
 <?php
@@ -22,7 +22,6 @@
         die(mysqli_error($dbLink));
     $result = mysqli_fetch_all($temp);
 
-    unset($temp);
     mysqli_close($dbLink);
 
     $_admin = False;
@@ -38,7 +37,7 @@
                 <h2><?php echo $result[$i][0]?></h2>
 
                 <img class="vozilo" 
-                src="http://localhost/KartingIS/images/karts/<?php echo $result[$i][0]?>.jpg" 
+                src="../images/karts/<?php echo $result[$i][0]?>.jpg" 
                 alt="<?php echo $result[$i][0]?>">
                 
                 <?php if($_admin) :?>
@@ -49,9 +48,8 @@
         <?php endfor;?>
         
         <div id="slika">
-            <img  src="http://localhost/KartingIS/images/flags/flag2.jpg" alt="zastava">
+            <img  src="../images/flags/flag2.jpg" alt="zastava">
         </div>
     </div>
 </body>
-
 </html>

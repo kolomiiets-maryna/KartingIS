@@ -3,7 +3,7 @@
 
 <head>
     <title>Cjenovnik</title>
-    <link rel="stylesheet" href="http://localhost/KartingIS/css/general.css">
+    <link rel="stylesheet" href="../css/general.css">
 </head>
 
 <?php
@@ -38,17 +38,17 @@
         die(mysqli_error($dbLink));
     $putanje = mysqli_fetch_all($temp);
 
-    unset($temp);
     mysqli_close($dbLink);
 ?>
 
 <body>
     <div class="align_area">
         <h1>CJENOVNIK</h1>
+        <h4>( Cijena jednog lap-a )</h4>
         <?php for($i = 0; $i < count($putanje); $i++) : ?>
             <div class="thingamajig<?php if($i == count($putanje)-1) echo " zero_margin needed_margin";?>">
                 <h2><?php echo $putanje[$i][0]; ?></h2>
-                <table>
+                <table class="round_table">
                     <tr>
                         <th>Vozilo</th>
                         <th>Cijena</th>
@@ -64,7 +64,7 @@
         <?php endfor; ?>
     </div>
     <div id="slika">
-        <img src="http://localhost/KartingIS/images/flags/flag2.jpg" alt="zastava">
+        <img src="../images/flags/flag2.jpg" alt="zastava">
     </div>
 </body>
 </html>

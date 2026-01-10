@@ -10,8 +10,8 @@
     echo "Populisanje baze sa gotovim podaciam.... <br>";
 
     $query = "
-    insert into Korisnici (korisnickoIme, sifra, godine, rodjendan, tel, email, brojTrka, bestLapTime, lastPresent, admin)
-    values ('Admin', '123', 99, '2004-02-13', '067167129', 'testmail@gmail.com', 1, 2, '2026-02-13', true);
+    insert into Korisnici (korisnickoIme, sifra, rodjendan, tel, email, brojTrka, bestLapTime, lastPresent, admin)
+    values ('Admin', '123', '2004-02-13', '067167129', 'testmail@gmail.com', 1, 2, '2026-02-13', true);
     ";
 
     if(!mysqli_query($dbLink, $query))

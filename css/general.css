@@ -5,6 +5,14 @@
     font-style: normal; 
 }
 
+.reg_error_message{
+    color: red;
+}
+
+.reg_success_message{
+    color: green;
+}
+
 h1, h2 {
     font-family: 'Sakana', sans-serif;
 }
@@ -47,7 +55,7 @@ img{
     width: 100%;
 }
 
-table {
+.round_table {
     border-color: whitesmoke;
     border-style: double;
     border-width: 25pt;

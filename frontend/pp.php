@@ -3,7 +3,7 @@
 
 <head>
     <title>Putanje</title>
-    <link rel="stylesheet" href="http://localhost/KartingIS/css/general.css">
+    <link rel="stylesheet" href="../css/general.css">
 </head>
 
 <?php
@@ -22,7 +22,6 @@
         die(mysqli_error($dbLink));
     $result = mysqli_fetch_all($temp);
 
-    unset($temp);
     mysqli_close($dbLink);
 ?>
 
@@ -34,14 +33,14 @@
                 <h2><?php echo $result[$i][0]?></h2>
                 
                 <img class="putanja" 
-                src="http://localhost/KartingIS/images/tracks/<?php echo $result[$i][0]?>.jpg" 
+                src="../images/tracks/<?php echo $result[$i][0]?>.jpg" 
                 alt="<?php echo $result[$i][0]?>">
 
                 <h3>Duzina: <?php echo $result[$i][1]; ?>m</h3>
             </div>
         <?php endfor;?>
         <div id="slika">
-            <img  src="http://localhost/KartingIS/images/flags/flag2.jpg" alt="zastava">
+            <img  src="../images/flags/flag2.jpg" alt="zastava">
         </div>
     </div>
 </body>

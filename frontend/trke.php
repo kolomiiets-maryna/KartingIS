@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Postojeće trke</title>
-    <link rel="stylesheet" href="http://localhost/KartingIS/css/general.css" type="text/css">
+    <link rel="stylesheet" href="../css/general.css" type="text/css">
 </head>
 
 <?php
@@ -11,7 +11,7 @@
 
 <body>
     <div id="s1">
-        <img src="http://localhost/KartingIS/images/flags/flag1.jpg" alt="zastava">
+        <img src="../images/flags/flag1.jpg" alt="zastava">
     </div>
     <div id="glavni">
         <h1>Postojeće trke</h1>
@@ -25,7 +25,7 @@
         </table>
     </div>
      <div id="s2">
-        <img src="http://localhost/KartingIS/images/flags/flag1.jpg" alt="zastava">
+        <img src="../images/flags/flag1.jpg" alt="zastava">
     </div>
 </body>
 </html>
