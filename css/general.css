@@ -55,6 +55,22 @@ img{
     width: 100%;
 }
 
+.track_table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.track_table_cell{
+    border-color: whitesmoke;
+    border-style: solid;
+    border-width: 3pt;
+    padding: 3pt;
+}
+
+.light_green{
+    background-color: rgba(144, 238, 144, 0.328);
+}
+
 .round_table {
     border-color: whitesmoke;
     border-style: double;
@@ -77,20 +93,34 @@ button{
 }
 #glavni{
     margin-top: 10%;
-    width: 30%;
-    /* margin-left: 10%; */
-    /* margin-right: 10%; */
+    width: 50%;
     float: left;
+    padding: 2%;
+    box-sizing: border-box;
 }
 #s1{
     float: left;
-    width: 30%;
+    width: 25%;
     margin-right: 5%;
+    margin: 0;
 }
 #s2{
     float: left;
-    width: 30%;
+    width: 25%;
     margin-left: 5%;
+    margin: 0;
+}
+
+.half_width{
+    width: 50%;
+}
+
+._75_percent_width{
+    width: 75%;
+}
+
+.center{
+    margin: auto;
 }
 
 #race-form {

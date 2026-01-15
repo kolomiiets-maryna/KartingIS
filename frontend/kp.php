@@ -6,7 +6,7 @@
 </head>
 
 <?php
-    require_once("../header.php");
+    require_once("header.php");
     if(empty($_SESSION["kID"])){
         header("location: ../frontend/main.php");
         exit();
@@ -34,7 +34,7 @@
         <div id="glavni">
             <h1>Moji podaci</h1>
             <form id="lični-podaci">
-                <p>Korisnićko ime: <?php echo $result[0][1]; ?><span id="username"> </span></p>
+                <p>Korisničko ime: <?php echo $result[0][1]; ?><span id="username"> </span></p>
                 <p>Telefon: <?php echo $result[0][4]; ?><span id="phone"> </span></p>
                 <p>Email: <?php echo $result[0][5]; ?><span id="email"> </span></p>
                 <p>Rođendan: <?php echo $result[0][3]; ?><span id="birthday"> </span></p>

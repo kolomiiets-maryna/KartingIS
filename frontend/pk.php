@@ -14,12 +14,24 @@
         <div id="glavni" class="needed_margin">
             <h1>Prijava korisnika</h1>
             <form id="login-form" method="POST" action="../backend/user_registration_handler.php">
-                <input type="text" name="username" placeholder="Korisničko ime" required>
-                <input type="password" name="password" placeholder="Lozinka" required>
-                <input type="tel" name="phone" placeholder="Broj telefona" required>
-                <input type="email" name="email" placeholder="E-mail" required>
-                <input type="date" name="birthday" placeholder="Datum rođenja" required>
-                <button type="submit">Prijava</button>
+                <div class="center form-row half_width">
+                    <input type="text" name="username" placeholder="Korisničko ime" required>
+                </div>
+                <div class="center form-row half_width">
+                    <input type="password" name="password" placeholder="Lozinka" required>
+                </div>
+                <div class="center form-row half_width">
+                    <input type="tel" name="phone" placeholder="Broj telefona" required>
+                </div>
+                <div class="center form-row half_width">
+                    <input type="email" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="center form-row half_width">
+                    <input type="date" name="birthday" placeholder="Datum rođenja" required>
+                </div>
+                <div class="center form-row half_width">
+                    <button type="submit">Prijava</button>
+                </div>
             </form>
         </div>
         <div id="s2">

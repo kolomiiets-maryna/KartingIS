@@ -7,7 +7,7 @@
 </head>
 
 <?php
-    require_once("../header.php");
+    require_once("header.php");
 
     $dbLink = mysqli_connect("localhost","root","");
     if(!$dbLink)

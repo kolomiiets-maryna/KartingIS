@@ -7,7 +7,7 @@
 </head>
 
 <?php
-    require_once("../header.php");
+    require_once("header.php");
     
     if(empty($_SESSION["kID"])){
         header("location: http://localhost/KartingIS/frontend/main.php");

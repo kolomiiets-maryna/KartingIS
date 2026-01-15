@@ -16,13 +16,13 @@
     <div class="pozadina">
     <header class="topbar">
 
-        <a class="logo" href="../frontend/main.php">
+        <a class="logo" href="main.php">
             KARTING CENTAR
         </a>
         
         <?php if(!isset($_SESSION["kID"])) : ?>
             <div class="login-button">
-                <a href="../frontend/login.php" class="btn">
+                <a href="login.php" class="btn">
                     <i class="fas fa-sign-in-alt"></i> Prijava
                 </a>
             </div>
@@ -34,7 +34,7 @@
             </div>
 
             <div class="login-button">
-                <a href="../frontend/kp.php" class="btn">
+                <a href="kp.php" class="btn">
                     Vas Nalog
                 </a>
             </div>
@@ -43,18 +43,26 @@
     </header>
 
     <nav class="nav-bar">
-        <a class="options" href="../frontend/pp.php">PUTANJA</a>
-        <a class="options" href="../frontend/pv.php">VOZILA</a>
-        <a class="options" href="../frontend/cjenovnik.php">CJENOVNIK</a>
-        <div class="dropdown">
-            <a href="#" class="dropbtn">TRKE</a>
-            <div class="dropdown-content">
-                <?php if(isset($_SESSION["kID"])) : ?>
-                    <a class="dropdown-el" href="../frontend/pt.php">Prijava trke</a>
-                <?php endif; ?>
-                <a class="dropdown-el" href="../frontend/trke.php">Postojeće trke</a>
+        <a class="options" href="pp.php">PUTANJA</a>
+        <a class="options" href="pv.php">VOZILA</a>
+        <a class="options" href="cjenovnik.php">CJENOVNIK</a>
+        <?php if(isset($_SESSION["kID"])) : ?>
+            <div class="options dropdown">
+                <a href="#" class="dropbtn">TRKE</a>
+                <div class="dropdown-content">
+                    <a class="dropdown-el" href="pt.php">Prijava trke</a>
+                    <a class="dropdown-el" href="trke.php">Postojeće trke</a>
+                </div>
             </div>
-        </div>
+            <?php if($_SESSION["admin"]) : ?>
+                <div class="options dropdown">
+                    <a href="#" class="dropbtn">ADMIN</a>
+                    <div class="dropdown-content">
+                        <a class="dropdown-el" href="user_manage.php">Korisnici</a>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
     </nav>
 </div>
 </body>
