@@ -24,7 +24,7 @@
 
     mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
     
-    $query = "select pID, brojTrkaca, datumIVrijeme, brojLapova, vID from Trke
+    $query = "SELECT pID, brojTrkaca, datumIVrijeme, brojLapova, vID from Trke
     where DATE(datumIVrijeme) = '{$_POST['datum']}';";
 
     $temp = mysqli_query($dbLink, $query);
@@ -32,14 +32,14 @@
         die(mysqli_error($dbLink));
     $races = mysqli_fetch_all($temp);
 
-    $query = "select duzina from Putanje";
+    $query = "SELECT duzina from Putanje";
 
     $temp = mysqli_query($dbLink, $query);
     if(!$temp)
         die(mysqli_error($dbLink));
     $trackLengths = mysqli_fetch_all($temp);
 
-    $query = "select brojDostupnih from vozila where vID = {$_POST['vozila']}";
+    $query = "SELECT brojDostupnih from vozila where vID = {$_POST['vozila']}";
 
     $temp = mysqli_query($dbLink, $query);
     if(!$temp)
@@ -71,16 +71,26 @@
         exit();
     }
 
-    $query = "insert into Trke (pID, vID, brojTrkaca, datumIVrijeme, brojLapova)
+    $query = "INSERT into Trke (pID, vID, brojTrkaca, datumIVrijeme, brojLapova)
     values ({$_POST['putanja']},{$_POST['vozila']},{$_POST['broj_ucesnika']},
     '{$_POST['datum']} {$_POST['vrijeme']}', {$_POST['lapovi']});";
 
     if(!mysqli_query($dbLink, $query))
         die(mysqli_error($dbLink));
 
+    $query = "SELECT cijena from Cijene
+    where pId = {$_POST["putanja"]} and vID = {$_POST["vozila"]};";
+
+    $temp = mysqli_query($dbLink, $query);
+    if(!$temp)
+        die(mysqli_error($dbLink));
+    $pricePerLap = mysqli_fetch_all($temp)[0][0];
+
     mysqli_close($dbLink);
 
-    $_SESSION["RaceRegSuccess"] = "Uspjesno zakazana trka";
+    $_SESSION["RaceRegSuccess"] = "Uspjesno zakazana trka<br>
+    Cijena po osobi: ". ($pricePerLap * $_POST["lapovi"]) . "€<br>
+    Ukupna cijena: " . ($pricePerLap * $_POST["lapovi"] * $_POST["broj_ucesnika"]) . "€";
     header("location: http://localhost" . $_SESSION["lastPage"]);
     exit();
 ?>
