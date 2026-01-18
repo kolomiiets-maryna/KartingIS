@@ -60,7 +60,7 @@
 
         $query = "SELECT kID FROM trke left join (
         select kt.tID, kID from vezakorisniktrka as kt 
-        where kID = 1) test on trke.tID = test.tID
+        where kID = {$_SESSION["kID"]}) test on trke.tID = test.tID
         where date(trke.datumIVrijeme) = '{$_SESSION['lastDate']}'
         order by trke.datumIVrijeme ASC;";
 
