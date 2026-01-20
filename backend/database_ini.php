@@ -17,12 +17,12 @@
 
     $query = "
     create table if not exists Korisnici(
-        kID mediumint UNSIGNED AUTO_INCREMENT,
+        kID mediumint UNSIGNED AUTO_INCREMENT not null,
         korisnickoIme varchar(20) not null,
         sifra varchar(20) not null,
         rodjendan date not null,
         tel varchar(12),
-        eMail varchar(64) not null,
+        eMail varchar(48) not null,
         brojTrka smallint UNSIGNED,
         bestLapTime float(12),
         lastPresent date,
@@ -31,7 +31,7 @@
     );
 
     create table if not exists Vozila(
-        vID tinyint UNSIGNED auto_increment,
+        vID tinyint UNSIGNED auto_increment not null,
         naziv varchar(15) not null,
         broj tinyint UNSIGNED not null,
         brojDostupnih tinyint UNSIGNED not null,
@@ -39,14 +39,14 @@
     );
 
     create table if not exists Putanje(
-        pID tinyint UNSIGNED auto_increment,
+        pID tinyint UNSIGNED auto_increment not null,
         naziv varchar(20) not null,
         duzina smallint UNSIGNED not null,
         primary key (pID)
     );
 
     create table if not exists Trke(
-        tID int UNSIGNED auto_increment,
+        tID int UNSIGNED auto_increment not null,
         pID tinyint UNSIGNED not null,
         vID tinyint UNSIGNED not null,
         brojTrkaca tinyint UNSIGNED not null,

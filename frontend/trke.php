@@ -92,7 +92,7 @@
         </form>
         <?php if(!empty($_SESSION['lastDate'])) : ?>
             <?php if(count($trke) > 0) : ?>
-                <form method="POST" action="../backend/race_application_and_deletion_manager.php">
+                <form method="POST" action="../backend/race_application_and_deletion_handler.php">
                     <table class="track_table">
                         <tr class="zero_margin">
                             <th class="track_table_cell">Putanja</th>
