@@ -9,12 +9,8 @@
 <?php
     require_once("header.php");
 
-    $dbLink = mysqli_connect("localhost","root","");
-    if(!$dbLink)
-        die("Neuspjesno povezivanje sa bazom: " . mysqli_error($dbLink));
-
-    mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
-
+    include_once("../backend/connect_to_database.php");
+    
     $query = "select naziv, broj, brojDostupnih from Vozila";
     
     $temp = mysqli_query($dbLink, $query);

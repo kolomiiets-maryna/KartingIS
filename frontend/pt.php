@@ -8,17 +8,14 @@
 
 <?php
     require_once("header.php");
+    $host = $_SERVER['HTTP_HOST'];
     
     if(empty($_SESSION["kID"])){
-        header("location: http://localhost/KartingIS/frontend/main.php");
+        header("location: http://$host/KartingIS/frontend/main.php");
         exit();
     }
 
-    $dbLink = mysqli_connect("localhost","root","");
-    if(!$dbLink)
-        die("Neuspjesno povezivanje: " . mysqli_error($dbLink));
-
-    mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
+    include_once("../backend/connect_to_database.php");
 
     $query = "select vID, naziv from Vozila";
     

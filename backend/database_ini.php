@@ -1,5 +1,6 @@
 <?php
-    $dbLink = mysqli_connect("localhost","root","");
+    $host = $_SERVER['HTTP_HOST'];
+    $dbLink = mysqli_connect("$host","root","");
     if(!$dbLink)
         die("Neuspjesno povezivanje: " . mysqli_error($dbLink));
     
@@ -72,10 +73,10 @@
         FOREIGN KEY (pID) REFERENCES Putanje(pID),
         FOREIGN KEY (vID) REFERENCES Vozila(vID),
         primary key (pID, vID)
-    )";
+    );";
 
     if(!mysqli_multi_query($dbLink, $query))
-            die(mysqli_error($dbLink));
+        die(mysqli_error($dbLink));
         
-    mysqli_close($dbLink)
+    mysqli_close($dbLink);
 ?>

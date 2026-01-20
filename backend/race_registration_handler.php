@@ -2,7 +2,7 @@
     session_start();
 
     if(empty($_SESSION["kID"])){
-        header("location: http://localhost/KartingIS/frontend/main.php");
+        header("location: http://$host/KartingIS/frontend/main.php");
         exit();
     }
 
@@ -14,15 +14,11 @@
 
     if($startTime < new DateTimeImmutable()){
         $_SESSION["RaceRegError"] = "Dati termin je u proslosti";
-        header("location: http://localhost" . $_SESSION["lastPage"]);
+        header("location: http://$host" . $_SESSION["lastPage"]);
         exit();
     }
 
-    $dbLink = mysqli_connect("localhost","root","");
-    if(!$dbLink)
-        die("Neuspjesno povezivanje: " . mysqli_error($dbLink));
-
-    mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
+    include_once("connect_to_database.php");
     
     $query = "SELECT pID, brojTrkaca, datumIVrijeme, brojLapova, vID from Trke
     where DATE(datumIVrijeme) = '{$_POST['datum']}';";
@@ -39,7 +35,7 @@
         die(mysqli_error($dbLink));
     $trackLengths = mysqli_fetch_all($temp);
 
-    $query = "SELECT brojDostupnih from vozila where vID = {$_POST['vozila']}";
+    $query = "SELECT brojDostupnih from Vozila where vID = {$_POST['vozila']}";
 
     $temp = mysqli_query($dbLink, $query);
     if(!$temp)
@@ -57,7 +53,7 @@
 
         if($_POST["putanja"] == $races[$i][0]){
             $_SESSION["RaceRegError"] = "Putanja je zauzeta u datom terminu";
-            header("location: http://localhost" . $_SESSION["lastPage"]);
+            header("location: http://$host" . $_SESSION["lastPage"]);
             exit();
         }
 
@@ -67,7 +63,7 @@
 
     if($availableKarts < $_POST["broj_ucesnika"]){
         $_SESSION["RaceRegError"] = "Nije dostupan dovoljan broj vozila u datom terminu";
-        header("location: http://localhost" . $_SESSION["lastPage"]);
+        header("location: http://$host" . $_SESSION["lastPage"]);
         exit();
     }
 
@@ -91,6 +87,6 @@
     $_SESSION["RaceRegSuccess"] = "Uspjesno zakazana trka<br>
     Cijena po osobi: ". ($pricePerLap * $_POST["lapovi"]) . "€<br>
     Ukupna cijena: " . ($pricePerLap * $_POST["lapovi"] * $_POST["broj_ucesnika"]) . "€";
-    header("location: http://localhost" . $_SESSION["lastPage"]);
+    header("location: http://$host" . $_SESSION["lastPage"]);
     exit();
 ?>

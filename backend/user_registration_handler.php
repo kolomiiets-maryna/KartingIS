@@ -4,11 +4,7 @@
     if(empty($_POST))
         die("No post recieved");
 
-    $dbLink = mysqli_connect("localhost","root","");
-    if(!$dbLink)
-        die("Neuspjesno povezivanje: " . mysqli_error($dbLink));
-
-    mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
+    include_once("connect_to_database.php");
 
     $query = "
     insert into Korisnici (korisnickoIme, sifra, rodjendan, tel, email, brojTrka, bestLapTime, lastPresent, admin)
@@ -23,6 +19,6 @@
 
     mysqli_close($dbLink);
 
-    header("location: http://localhost" . $_SESSION["lastPage"]);
+    header("location: http://$host" . $_SESSION["lastPage"]);
     exit();
 ?>

@@ -1,14 +1,6 @@
 <?php
     session_start();
-
-    if(empty($_POST))
-        die("No post recieved (skill issue)");
-
-    $dbLink = mysqli_connect("localhost","root","");
-    if(!$dbLink)
-        die("Neuspjesno povezivanje sa bazom: " . mysqli_error($dbLink));
-
-    mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
+    include_once("connect_to_database.php");
 
     $query = "
     select kID, admin from Korisnici 
@@ -22,7 +14,7 @@
     if(empty($result)){
         mysqli_close($dbLink);
         $_SESSION["badlogin"] = true;
-        header("Location: http://localhost/KartingIS/frontend/login.php");
+        header("Location: http://$host/KartingIS/frontend/login.php");
         die();
     }
 
@@ -30,6 +22,6 @@
 
     $_SESSION["kID"] = $result[0][0];
     $_SESSION["admin"] = $result[0][1];
-    header("location: http://localhost" . $_SESSION["lastPage"]);
+    header("location: http://$host" . $_SESSION["lastPage"]);
     die();
 ?>

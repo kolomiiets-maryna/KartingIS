@@ -1,11 +1,5 @@
 <?php
-    $dbLink = mysqli_connect("localhost","root","");
-    if(!$dbLink)
-        die("Neuspjesno povezivanje: " . mysqli_error($dbLink));
-    
-    echo "Uspjesno povezivanje sa bazom <br>";
-
-    mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
+    include_once("connect_to_database.php");
     
     echo "Populisanje baze sa gotovim podaciam.... <br>";
 

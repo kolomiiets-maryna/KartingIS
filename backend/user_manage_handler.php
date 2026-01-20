@@ -1,24 +1,21 @@
 <?php
     session_start();
+    $host = $_SERVER['HTTP_HOST'];
 
     if(empty($_SESSION["kID"])){
-        header("location: http://localhost/KartingIS/frontend/main.php");
+        header("location: http://$host/KartingIS/frontend/main.php");
         exit();
     }
 
     if(empty($_POST)){
-        header("location: http://localhost" . $_SESSION["lastPage"]);
+        header("location: http://$host" . $_SESSION["lastPage"]);
         exit();
     }
 
-    $dbLink = mysqli_connect("localhost","root","");
-    if(!$dbLink)
-        die("Neuspjesno povezivanje: " . mysqli_error($dbLink));
-
-    mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
+    include_once("connect_to_database.php");
     
     if(!empty($_POST["assign"])){
-        $query = "UPDATE korisnici as k
+        $query = "UPDATE Korisnici as k
         set k.admin = NOT k.admin
         where k.kID in (" . implode(',',$_POST["assign"]) . ");";
         
@@ -33,7 +30,7 @@
         if(!mysqli_query($dbLink, $query))
             die(mysqli_error($dbLink));
 
-        $query = "DELETE from korisnici where kID in (" . $implosion . ");";
+        $query = "DELETE from Korisnici where kID in (" . $implosion . ");";
         
         if(!mysqli_query($dbLink, $query))
             die(mysqli_error($dbLink));
@@ -41,6 +38,6 @@
 
     mysqli_close($dbLink);
 
-    header("location: http://localhost" . $_SESSION["lastPage"]);
+    header("location: http://$host" . $_SESSION["lastPage"]);
     exit();
 ?>

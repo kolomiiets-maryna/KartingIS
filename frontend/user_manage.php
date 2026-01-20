@@ -7,9 +7,10 @@
 
 <?php
     require_once("header.php");
+    $host = $_SERVER['HTTP_HOST'];
 
     if(empty($_SESSION["kID"]) && !$_SESSION['admin']){
-        header("location: http://localhost/KartingIS/frontend/main.php");
+        header("location: http://$host/KartingIS/frontend/main.php");
         exit();
     }
 
@@ -18,11 +19,7 @@
     }
 
     if(!empty($_SESSION['lastUsername'])){
-        $dbLink = mysqli_connect("localhost","root","");
-        if(!$dbLink)
-            die("Neuspjesno povezivanje: " . mysqli_error($dbLink));
-
-        mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
+        include_once("../backend/connect_to_database.php");
 
         $query = "SELECT kID, korisnickoIme, rodjendan, tel, eMail, admin from Korisnici 
         where instr(korisnickoIme, '{$_SESSION['lastUsername']}')

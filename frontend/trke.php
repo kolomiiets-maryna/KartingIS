@@ -7,17 +7,14 @@
 
 <?php
     require_once("header.php");
+    $host = $_SERVER['HTTP_HOST'];
 
     if(empty($_SESSION["kID"])){
-        header("location: http://localhost/KartingIS/frontend/main.php");
+        header("location: http://$host/KartingIS/frontend/main.php");
         exit();
     }
 
-    $dbLink = mysqli_connect("localhost","root","");
-    if(!$dbLink)
-        die("Neuspjesno povezivanje: " . mysqli_error($dbLink));
-
-    mysqli_select_db($dbLink, "KartingIS") or die(mysqli_error($dbLink));
+    include_once("../backend/connect_to_database.php");
 
     if(!empty($_POST)){
         $_SESSION['lastDate'] = $_POST['date'];
@@ -47,22 +44,22 @@
             die("Neuspjesno nalazenje vozila: " . mysqli_error($dbLink));
         $vozila = mysqli_fetch_all($temp);
 
-        $query = "SELECT count(kt.kID) FROM trke
-        left join vezakorisniktrka as kt on kt.tID = trke.tID 
-        where date(trke.datumIVrijeme) = '{$_SESSION['lastDate']}' 
-        group by trke.tID
-        order by trke.datumIVrijeme ASC;";
+        $query = "SELECT count(kt.kID) FROM Trke
+        left join VezaKorisnikTrka as kt on kt.tID = Trke.tID 
+        where date(Trke.datumIVrijeme) = '{$_SESSION['lastDate']}' 
+        group by Trke.tID
+        order by Trke.datumIVrijeme ASC;";
 
         $temp = mysqli_query($dbLink, $query);
         if(!$temp)
             die(mysqli_error($dbLink));
         $racerNums = mysqli_fetch_all($temp);
 
-        $query = "SELECT kID FROM trke left join (
-        select kt.tID, kID from vezakorisniktrka as kt 
-        where kID = {$_SESSION["kID"]}) test on trke.tID = test.tID
-        where date(trke.datumIVrijeme) = '{$_SESSION['lastDate']}'
-        order by trke.datumIVrijeme ASC;";
+        $query = "SELECT kID FROM Trke left join (
+        select kt.tID, kID from VezaKorisnikTrka as kt 
+        where kID = {$_SESSION["kID"]}) test on Trke.tID = test.tID
+        where date(Trke.datumIVrijeme) = '{$_SESSION['lastDate']}'
+        order by Trke.datumIVrijeme ASC;";
 
         $temp = mysqli_query($dbLink, $query);
         if(!$temp)
